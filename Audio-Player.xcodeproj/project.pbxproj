@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		E42F54B128C3886A00709459 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42F54B028C3886A00709459 /* AppDelegate.swift */; };
 		E42F54B328C3886A00709459 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42F54B228C3886A00709459 /* SceneDelegate.swift */; };
-		E42F54B528C3886A00709459 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42F54B428C3886A00709459 /* ViewController.swift */; };
 		E42F54B828C3886A00709459 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E42F54B628C3886A00709459 /* Main.storyboard */; };
 		E42F54BA28C3886A00709459 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E42F54B928C3886A00709459 /* Assets.xcassets */; };
 		E42F54BD28C3886A00709459 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E42F54BB28C3886A00709459 /* LaunchScreen.storyboard */; };
+		E42F54C828C38F9500709459 /* SongListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42F54C728C38F9500709459 /* SongListController.swift */; };
+		E42F54CA28C38FA800709459 /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42F54C928C38FA800709459 /* PlayerController.swift */; };
+		E42F54CE28C3941F00709459 /* Imagine Dragons - Believer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E42F54CC28C3941F00709459 /* Imagine Dragons - Believer.mp3 */; };
+		E42F54CF28C3941F00709459 /* muzlome_Lilly_Wood_The_Prick_-_Prayer_in_C_47911990.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E42F54CD28C3941F00709459 /* muzlome_Lilly_Wood_The_Prick_-_Prayer_in_C_47911990.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E42F54AD28C3886A00709459 /* Audio-Player.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Audio-Player.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E42F54B028C3886A00709459 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E42F54B228C3886A00709459 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E42F54B428C3886A00709459 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E42F54B728C3886A00709459 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E42F54B928C3886A00709459 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E42F54BC28C3886A00709459 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E42F54BE28C3886A00709459 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E42F54C728C38F9500709459 /* SongListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListController.swift; sourceTree = "<group>"; };
+		E42F54C928C38FA800709459 /* PlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerController.swift; sourceTree = "<group>"; };
+		E42F54CC28C3941F00709459 /* Imagine Dragons - Believer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Imagine Dragons - Believer.mp3"; sourceTree = "<group>"; };
+		E42F54CD28C3941F00709459 /* muzlome_Lilly_Wood_The_Prick_-_Prayer_in_C_47911990.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "muzlome_Lilly_Wood_The_Prick_-_Prayer_in_C_47911990.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +62,50 @@
 		E42F54AF28C3886A00709459 /* Audio-Player */ = {
 			isa = PBXGroup;
 			children = (
+				E42F54CB28C3940E00709459 /* Songs */,
+				E42F54C428C38D7100709459 /* Controller */,
+				E42F54C528C38D7F00709459 /* View */,
 				E42F54B028C3886A00709459 /* AppDelegate.swift */,
 				E42F54B228C3886A00709459 /* SceneDelegate.swift */,
-				E42F54B428C3886A00709459 /* ViewController.swift */,
-				E42F54B628C3886A00709459 /* Main.storyboard */,
 				E42F54B928C3886A00709459 /* Assets.xcassets */,
-				E42F54BB28C3886A00709459 /* LaunchScreen.storyboard */,
 				E42F54BE28C3886A00709459 /* Info.plist */,
 			);
 			path = "Audio-Player";
+			sourceTree = "<group>";
+		};
+		E42F54C428C38D7100709459 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E42F54C728C38F9500709459 /* SongListController.swift */,
+				E42F54C928C38FA800709459 /* PlayerController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E42F54C528C38D7F00709459 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E42F54C628C38DC800709459 /* Storyboards */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E42F54C628C38DC800709459 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				E42F54B628C3886A00709459 /* Main.storyboard */,
+				E42F54BB28C3886A00709459 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		E42F54CB28C3940E00709459 /* Songs */ = {
+			isa = PBXGroup;
+			children = (
+				E42F54CC28C3941F00709459 /* Imagine Dragons - Believer.mp3 */,
+				E42F54CD28C3941F00709459 /* muzlome_Lilly_Wood_The_Prick_-_Prayer_in_C_47911990.mp3 */,
+			);
+			path = Songs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +168,9 @@
 			files = (
 				E42F54BD28C3886A00709459 /* LaunchScreen.storyboard in Resources */,
 				E42F54BA28C3886A00709459 /* Assets.xcassets in Resources */,
+				E42F54CF28C3941F00709459 /* muzlome_Lilly_Wood_The_Prick_-_Prayer_in_C_47911990.mp3 in Resources */,
 				E42F54B828C3886A00709459 /* Main.storyboard in Resources */,
+				E42F54CE28C3941F00709459 /* Imagine Dragons - Believer.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +181,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E42F54B528C3886A00709459 /* ViewController.swift in Sources */,
+				E42F54C828C38F9500709459 /* SongListController.swift in Sources */,
 				E42F54B128C3886A00709459 /* AppDelegate.swift in Sources */,
+				E42F54CA28C38FA800709459 /* PlayerController.swift in Sources */,
 				E42F54B328C3886A00709459 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
