@@ -9,8 +9,11 @@ import UIKit
 
 class SongListController: UIViewController {
 
+    // player entity
+    var player: Player!
+    
     // player controller entity
-    lazy var playerController = PlayerController()
+    var playerController: PlayerController!
     
     // getting rectangle on the top of the view
     lazy var topRect = addYellowRect()
@@ -25,21 +28,19 @@ class SongListController: UIViewController {
     lazy var secondSongImage = getImageView(imageName: "2.png", x: view.frame.minX + 5, y: firstSongImage.frame.maxY + 20)
     
     // getting first song duration label
-    lazy var firstDurationLabel = getDurationLabel(duration: "3:24", x: firstSongButton.frame.maxX - 30, y: firstSongButton.center.y)
+    lazy var firstDurationLabel = getDurationLabel(duration: "3:09", x: firstSongButton.frame.maxX - 30, y: firstSongButton.center.y)
     
     // getting second duration label
-    lazy var secondDurationLabel = getDurationLabel(duration: "3:09", x: secondSongButton.frame.maxX - 30, y: secondSongButton.center.y)
+    lazy var secondDurationLabel = getDurationLabel(duration: "3:24", x: secondSongButton.frame.maxX - 30, y: secondSongButton.center.y)
     
     // getting first song button
-    lazy var firstSongButton = getSongButtton(forSong: "                Imagine Dragons - Believer", x: firstSongImage.frame.minX, y: firstSongImage.frame.minY)
+    lazy var firstSongButton = getSongButtton(forSong: "                Lilly Wood The Prick-Prayer in C", x: firstSongImage.frame.minX, y: firstSongImage.frame.minY)
     
     // getting second song button
-    lazy var secondSongButton = getSongButtton(forSong: "                Lilly Wood The Prick-Prayer in C", x: secondSongImage.frame.minX, y: secondSongImage.frame.minY)
+    lazy var secondSongButton = getSongButtton(forSong: "                Imagine Dragons - Believer", x: secondSongImage.frame.minX, y: secondSongImage.frame.minY)
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        view.backgroundColor = .black
+    override func loadView() {
+        super.loadView()
         
         view.layer.addSublayer(topRect)
         view.addSubview(topLabel)
@@ -49,7 +50,17 @@ class SongListController: UIViewController {
         view.addSubview(secondDurationLabel)
         view.addSubview(firstSongButton)
         view.addSubview(secondSongButton)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        view.backgroundColor = .black
+        firstSongButton.tag = 0
+        secondSongButton.tag = 1
         
+        player = Player()
+        playerController = PlayerController()
     }
     
     private func addYellowRect() -> CAShapeLayer {
@@ -125,6 +136,13 @@ class SongListController: UIViewController {
     
     @objc func goToPlayer(_ sender: UIButton) {
         self.present(playerController, animated: true)
+        player.songName = sender.tag == 0 ?  "Lilly Wood The Prick - Prayer in C.mp3" : "Imagine Dragons - Believer.mp3"
+        playerController.artistLabel.text = sender.tag == 0 ? "Lilly Wood The Prick" : "Imagine Dragons"
+        playerController.centralArtistLabel.text = sender.tag == 0 ? "Lilly Wood The Prick" : "Imagine Dragons"
+        
+        player.songImage = sender.tag == 0 ? UIImage(named: "1.png") : UIImage(named: "2.png")
+        playerController.songImageView.image = player.songImage
+        playerController.centralSongLabel.text = sender.tag == 0 ? "Prayer in C": "Believer"
     }
     
     private func getDurationLabel(duration: String, x: CGFloat, y: CGFloat) -> UILabel {
@@ -142,4 +160,5 @@ class SongListController: UIViewController {
         
         return label
     }
+    
 }

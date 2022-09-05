@@ -19,6 +19,15 @@
 		E4F03B6D28C5F8AC00824A2A /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F03B6B28C5F8AC00824A2A /* 1.png */; };
 		E4F03B6E28C5F8AC00824A2A /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F03B6C28C5F8AC00824A2A /* 2.png */; };
 		E4F03B7328C60A6300824A2A /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F03B7228C60A6300824A2A /* Player.swift */; };
+		E4F03B7E28C62F4C00824A2A /* icons8-shuffle-30.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F03B7628C62F4C00824A2A /* icons8-shuffle-30.png */; };
+		E4F03B8028C62F4C00824A2A /* icons8-expand-arrow-50.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F03B7828C62F4C00824A2A /* icons8-expand-arrow-50.png */; };
+		E4F03B8128C62F4C00824A2A /* icons8-dots-loading-48.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F03B7928C62F4C00824A2A /* icons8-dots-loading-48.png */; };
+		E4F03B8228C62F4C00824A2A /* icons8-pause-button-100.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F03B7A28C62F4C00824A2A /* icons8-pause-button-100.png */; };
+		E4F03B8328C62F4C00824A2A /* icons8-play-button-circled-100.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F03B7B28C62F4C00824A2A /* icons8-play-button-circled-100.png */; };
+		E4F03B8428C62F4C00824A2A /* icons8-repeat-30.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F03B7C28C62F4C00824A2A /* icons8-repeat-30.png */; };
+		E4F03B8528C62F4C00824A2A /* icons8-end-100.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F03B7D28C62F4C00824A2A /* icons8-end-100.png */; };
+		E4F03B8728C62F5C00824A2A /* icons8-share-rounded-32.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F03B8628C62F5C00824A2A /* icons8-share-rounded-32.png */; };
+		E4F03B8928C6405A00824A2A /* icons8-plus-64.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F03B8828C6405A00824A2A /* icons8-plus-64.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +45,15 @@
 		E4F03B6B28C5F8AC00824A2A /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		E4F03B6C28C5F8AC00824A2A /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		E4F03B7228C60A6300824A2A /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		E4F03B7628C62F4C00824A2A /* icons8-shuffle-30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-shuffle-30.png"; sourceTree = "<group>"; };
+		E4F03B7828C62F4C00824A2A /* icons8-expand-arrow-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-expand-arrow-50.png"; sourceTree = "<group>"; };
+		E4F03B7928C62F4C00824A2A /* icons8-dots-loading-48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-dots-loading-48.png"; sourceTree = "<group>"; };
+		E4F03B7A28C62F4C00824A2A /* icons8-pause-button-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-pause-button-100.png"; sourceTree = "<group>"; };
+		E4F03B7B28C62F4C00824A2A /* icons8-play-button-circled-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-play-button-circled-100.png"; sourceTree = "<group>"; };
+		E4F03B7C28C62F4C00824A2A /* icons8-repeat-30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-repeat-30.png"; sourceTree = "<group>"; };
+		E4F03B7D28C62F4C00824A2A /* icons8-end-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-end-100.png"; sourceTree = "<group>"; };
+		E4F03B8628C62F5C00824A2A /* icons8-share-rounded-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-share-rounded-32.png"; sourceTree = "<group>"; };
+		E4F03B8828C6405A00824A2A /* icons8-plus-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-plus-64.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,10 +127,10 @@
 		E42F54CB28C3940E00709459 /* Files */ = {
 			isa = PBXGroup;
 			children = (
-				E42F54CC28C3941F00709459 /* Imagine Dragons - Believer.mp3 */,
-				E42F54CD28C3941F00709459 /* Lilly Wood The Prick - Prayer in C.mp3 */,
 				E4F03B6B28C5F8AC00824A2A /* 1.png */,
 				E4F03B6C28C5F8AC00824A2A /* 2.png */,
+				E4F03B7428C62F1C00824A2A /* Songs */,
+				E4F03B7528C62F2600824A2A /* ButtonImages */,
 			);
 			path = Files;
 			sourceTree = "<group>";
@@ -123,6 +141,31 @@
 				E4F03B7228C60A6300824A2A /* Player.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E4F03B7428C62F1C00824A2A /* Songs */ = {
+			isa = PBXGroup;
+			children = (
+				E42F54CC28C3941F00709459 /* Imagine Dragons - Believer.mp3 */,
+				E42F54CD28C3941F00709459 /* Lilly Wood The Prick - Prayer in C.mp3 */,
+			);
+			path = Songs;
+			sourceTree = "<group>";
+		};
+		E4F03B7528C62F2600824A2A /* ButtonImages */ = {
+			isa = PBXGroup;
+			children = (
+				E4F03B7928C62F4C00824A2A /* icons8-dots-loading-48.png */,
+				E4F03B7D28C62F4C00824A2A /* icons8-end-100.png */,
+				E4F03B7828C62F4C00824A2A /* icons8-expand-arrow-50.png */,
+				E4F03B7A28C62F4C00824A2A /* icons8-pause-button-100.png */,
+				E4F03B7B28C62F4C00824A2A /* icons8-play-button-circled-100.png */,
+				E4F03B7C28C62F4C00824A2A /* icons8-repeat-30.png */,
+				E4F03B7628C62F4C00824A2A /* icons8-shuffle-30.png */,
+				E4F03B8628C62F5C00824A2A /* icons8-share-rounded-32.png */,
+				E4F03B8828C6405A00824A2A /* icons8-plus-64.png */,
+			);
+			path = ButtonImages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,12 +226,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4F03B8228C62F4C00824A2A /* icons8-pause-button-100.png in Resources */,
+				E4F03B8928C6405A00824A2A /* icons8-plus-64.png in Resources */,
+				E4F03B8428C62F4C00824A2A /* icons8-repeat-30.png in Resources */,
+				E4F03B8728C62F5C00824A2A /* icons8-share-rounded-32.png in Resources */,
+				E4F03B8528C62F4C00824A2A /* icons8-end-100.png in Resources */,
 				E42F54BD28C3886A00709459 /* LaunchScreen.storyboard in Resources */,
+				E4F03B8128C62F4C00824A2A /* icons8-dots-loading-48.png in Resources */,
 				E42F54BA28C3886A00709459 /* Assets.xcassets in Resources */,
+				E4F03B8328C62F4C00824A2A /* icons8-play-button-circled-100.png in Resources */,
+				E4F03B8028C62F4C00824A2A /* icons8-expand-arrow-50.png in Resources */,
 				E4F03B6E28C5F8AC00824A2A /* 2.png in Resources */,
 				E42F54CF28C3941F00709459 /* Lilly Wood The Prick - Prayer in C.mp3 in Resources */,
 				E4F03B6D28C5F8AC00824A2A /* 1.png in Resources */,
 				E42F54B828C3886A00709459 /* Main.storyboard in Resources */,
+				E4F03B7E28C62F4C00824A2A /* icons8-shuffle-30.png in Resources */,
 				E42F54CE28C3941F00709459 /* Imagine Dragons - Believer.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

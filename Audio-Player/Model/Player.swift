@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 import AVFoundation
 
-class Songs {
+class Player {
+    var songName = ""
+    var songImage: UIImage?
     
 }
