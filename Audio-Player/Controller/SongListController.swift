@@ -9,6 +9,9 @@ import UIKit
 
 class SongListController: UIViewController {
 
+    // player controller entity
+    lazy var playerController = PlayerController()
+    
     // getting rectangle on the top of the view
     lazy var topRect = addYellowRect()
     
@@ -28,10 +31,10 @@ class SongListController: UIViewController {
     lazy var secondDurationLabel = getDurationLabel(duration: "3:09", x: secondSongButton.frame.maxX - 30, y: secondSongButton.center.y)
     
     // getting first song button
-    lazy var firstSongButton = getSongButtton(forSong: "  Imagine Dragons - Believer", x: firstSongImage.frame.maxX, y: firstSongImage.frame.minY)
+    lazy var firstSongButton = getSongButtton(forSong: "                Imagine Dragons - Believer", x: firstSongImage.frame.minX, y: firstSongImage.frame.minY)
     
     // getting second song button
-    lazy var secondSongButton = getSongButtton(forSong: "  Lilly Wood The Prick-Prayer in C", x: secondSongImage.frame.maxX, y: secondSongImage.frame.minY)
+    lazy var secondSongButton = getSongButtton(forSong: "                Lilly Wood The Prick-Prayer in C", x: secondSongImage.frame.minX, y: secondSongImage.frame.minY)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,7 +103,7 @@ class SongListController: UIViewController {
     
     private func getSongButtton(forSong: String, x: CGFloat, y: CGFloat) -> UIButton {
         // button creation
-        let width = view.frame.width - 10 - firstSongImage.frame.width
+        let width = view.frame.width - 10
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: width, height: 60))
         
         // button positioning
@@ -110,6 +113,7 @@ class SongListController: UIViewController {
         // button appearence settings
         button.setTitle(forSong, for: .normal)
         button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(.lightGray, for: .highlighted)
         button.backgroundColor = .clear
         button.contentHorizontalAlignment = .left
         button.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 16)
@@ -120,7 +124,7 @@ class SongListController: UIViewController {
     }
     
     @objc func goToPlayer(_ sender: UIButton) {
-        
+        self.present(playerController, animated: true)
     }
     
     private func getDurationLabel(duration: String, x: CGFloat, y: CGFloat) -> UILabel {
