@@ -16,6 +16,7 @@
 		E42F54CA28C38FA800709459 /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42F54C928C38FA800709459 /* PlayerController.swift */; };
 		E42F54CE28C3941F00709459 /* Imagine Dragons - Believer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E42F54CC28C3941F00709459 /* Imagine Dragons - Believer.mp3 */; };
 		E42F54CF28C3941F00709459 /* Lilly Wood The Prick - Prayer in C.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E42F54CD28C3941F00709459 /* Lilly Wood The Prick - Prayer in C.mp3 */; };
+		E47A71DD28C67D9D00772C64 /* icons8-end-100 2.png in Resources */ = {isa = PBXBuildFile; fileRef = E47A71DC28C67D9D00772C64 /* icons8-end-100 2.png */; };
 		E4F03B6D28C5F8AC00824A2A /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F03B6B28C5F8AC00824A2A /* 1.png */; };
 		E4F03B6E28C5F8AC00824A2A /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F03B6C28C5F8AC00824A2A /* 2.png */; };
 		E4F03B7328C60A6300824A2A /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F03B7228C60A6300824A2A /* Player.swift */; };
@@ -42,6 +43,7 @@
 		E42F54C928C38FA800709459 /* PlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerController.swift; sourceTree = "<group>"; };
 		E42F54CC28C3941F00709459 /* Imagine Dragons - Believer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Imagine Dragons - Believer.mp3"; sourceTree = "<group>"; };
 		E42F54CD28C3941F00709459 /* Lilly Wood The Prick - Prayer in C.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Lilly Wood The Prick - Prayer in C.mp3"; sourceTree = "<group>"; };
+		E47A71DC28C67D9D00772C64 /* icons8-end-100 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-end-100 2.png"; sourceTree = "<group>"; };
 		E4F03B6B28C5F8AC00824A2A /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		E4F03B6C28C5F8AC00824A2A /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		E4F03B7228C60A6300824A2A /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			children = (
 				E4F03B7928C62F4C00824A2A /* icons8-dots-loading-48.png */,
 				E4F03B7D28C62F4C00824A2A /* icons8-end-100.png */,
+				E47A71DC28C67D9D00772C64 /* icons8-end-100 2.png */,
 				E4F03B7828C62F4C00824A2A /* icons8-expand-arrow-50.png */,
 				E4F03B7A28C62F4C00824A2A /* icons8-pause-button-100.png */,
 				E4F03B7B28C62F4C00824A2A /* icons8-play-button-circled-100.png */,
@@ -237,6 +240,7 @@
 				E4F03B8328C62F4C00824A2A /* icons8-play-button-circled-100.png in Resources */,
 				E4F03B8028C62F4C00824A2A /* icons8-expand-arrow-50.png in Resources */,
 				E4F03B6E28C5F8AC00824A2A /* 2.png in Resources */,
+				E47A71DD28C67D9D00772C64 /* icons8-end-100 2.png in Resources */,
 				E42F54CF28C3941F00709459 /* Lilly Wood The Prick - Prayer in C.mp3 in Resources */,
 				E4F03B6D28C5F8AC00824A2A /* 1.png in Resources */,
 				E42F54B828C3886A00709459 /* Main.storyboard in Resources */,

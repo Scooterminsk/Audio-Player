@@ -39,6 +39,24 @@ class PlayerController: UIViewController {
     // getting central artist label
     lazy var centralArtistLabel = getCentralArtistLabel()
     
+    // getting duration slider
+    lazy var durationSlider = getDurationSlider()
+    
+    // getting pause/play button
+    lazy var pausePlayButton = getPlayPauseButton()
+    
+    // getting previous song button
+    lazy var previousSongButton = getPreviousSongButton()
+    
+    // getting next song button
+    lazy var nextSongButton = getNextSongButton()
+    
+    // getting song shuffle button
+    lazy var songShuffleButton = getSongShuffleButton()
+    
+    // getting song repeat button
+    lazy var songRepeatButton = getSongRepeatButton()
+    
     
     override func loadView() {
         super.loadView()
@@ -52,6 +70,12 @@ class PlayerController: UIViewController {
         view.addSubview(moreButton)
         view.addSubview(centralSongLabel)
         view.addSubview(centralArtistLabel)
+        view.addSubview(durationSlider)
+        view.addSubview(pausePlayButton)
+        view.addSubview(previousSongButton)
+        view.addSubview(nextSongButton)
+        view.addSubview(songShuffleButton)
+        view.addSubview(songRepeatButton)
         
     }
     
@@ -216,5 +240,122 @@ class PlayerController: UIViewController {
         label.textAlignment = .center
         
         return label
+    }
+    
+    private func getDurationSlider() -> UISlider {
+        // slider creation
+        let width = view.frame.width - 60
+        let slider = UISlider(frame: CGRect(x: 0, y: 0, width: width, height: 20))
+        // slider positioning
+        slider.center.x = view.center.x
+        slider.center.y = centralArtistLabel.frame.maxY + 40
+        
+        // slider appearence settings
+        slider.maximumTrackTintColor = .gray
+        slider.minimumTrackTintColor = .white
+        slider.thumbTintColor = .white
+        
+        slider.addTarget(nil, action: #selector(durationChanging(_:)), for: .valueChanged)
+        
+        return slider
+    }
+    
+    @objc func durationChanging(_ sender: UISlider) {
+        
+    }
+    
+    private func getPlayPauseButton() -> UIButton {
+        // button creation
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
+        // button positioning
+        button.center.x = view.center.x
+        button.center.y = durationSlider.frame.maxY + 70
+        
+        // button appearence settings
+        button.setImage(UIImage(named: "icons8-play-button-circled-100.png"), for: .normal)
+        
+        button.addTarget(nil, action: #selector(tapPlayPause(_:)), for: .touchUpInside)
+        
+        return button
+    }
+    
+    @objc func tapPlayPause(_ sender: UIButton) {
+        
+    }
+    
+    private func getPreviousSongButton() -> UIButton {
+        // button creation
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        // button positioning
+        button.center.x = pausePlayButton.frame.minX - 50
+        button.center.y = pausePlayButton.center.y
+        
+        // button appearence settings
+        button.setImage(UIImage(named: "icons8-end-100 2.png"), for: .normal)
+        
+        button.addTarget(nil, action: #selector(previousSong(_:)), for: .touchUpInside)
+        
+        return button
+    }
+    
+    @objc func previousSong(_ sender: UIButton) {
+        
+    }
+    
+    private func getNextSongButton() -> UIButton {
+        // button creation
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        // button positioning
+        button.center.x = pausePlayButton.frame.maxX + 50
+        button.center.y = pausePlayButton.center.y
+        
+        // button appearence settings
+        button.setImage(UIImage(named: "icons8-end-100.png"), for: .normal)
+        
+        button.addTarget(nil, action: #selector(nextSong(_:)), for: .touchUpInside)
+        
+        return button
+    }
+    
+    @objc func nextSong(_ sender: UIButton) {
+        
+    }
+    
+    private func getSongShuffleButton() -> UIButton {
+        // button creation
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        // button positioning
+        button.frame.origin.x = view.frame.origin.x + 30
+        button.center.y = previousSongButton.center.y
+        
+        // button appearence settings
+        button.setImage(UIImage(named: "icons8-shuffle-30.png"), for: .normal)
+        
+        button.addTarget(nil, action: #selector(shuffleSongs(_:)), for: .touchUpInside)
+        
+        return button
+    }
+    
+    @objc func shuffleSongs(_ sender: UIButton) {
+        
+    }
+    
+    private func getSongRepeatButton() -> UIButton {
+        // button creation
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        // button positioning
+        button.frame.origin.x = view.frame.maxX - 50
+        button.center.y = previousSongButton.center.y
+        
+        // button appearence settings
+        button.setImage(UIImage(named: "icons8-repeat-30.png"), for: .normal)
+        
+        button.addTarget(nil, action: #selector(repeatSong(_:)), for: .touchUpInside)
+        
+        return button
+    }
+    
+    @objc func repeatSong(_ sender: UIButton) {
+        
     }
 }
