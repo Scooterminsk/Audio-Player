@@ -1,2 +1,2 @@
 # Audio-Player
-Repeat multiple screens of an app Spotify. Created without using Storyboard.
+Multiple Screens of the Audio Player App. Created without using Storyboard.
