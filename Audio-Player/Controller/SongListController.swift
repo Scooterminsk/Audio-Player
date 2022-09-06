@@ -10,7 +10,7 @@ import UIKit
 class SongListController: UIViewController {
 
     // player entity
-    var player: Player!
+    var player: PlayerProtocol!
     
     // player controller entity
     var playerController: PlayerController!
@@ -136,13 +136,16 @@ class SongListController: UIViewController {
     
     @objc func goToPlayer(_ sender: UIButton) {
         self.present(playerController, animated: true)
-        player.songName = sender.tag == 0 ?  "Lilly Wood The Prick - Prayer in C.mp3" : "Imagine Dragons - Believer.mp3"
+        playerController.player = player
+        player.songName = sender.tag == 0 ?  "Lilly Wood The Prick - Prayer in C" : "Imagine Dragons - Believer"
         playerController.artistLabel.text = sender.tag == 0 ? "Lilly Wood The Prick" : "Imagine Dragons"
         playerController.centralArtistLabel.text = sender.tag == 0 ? "Lilly Wood The Prick" : "Imagine Dragons"
         
         player.songImage = sender.tag == 0 ? UIImage(named: "1.png") : UIImage(named: "2.png")
         playerController.songImageView.image = player.songImage
         playerController.centralSongLabel.text = sender.tag == 0 ? "Prayer in C": "Believer"
+        
+        player.playSong()
     }
     
     private func getDurationLabel(duration: String, x: CGFloat, y: CGFloat) -> UILabel {

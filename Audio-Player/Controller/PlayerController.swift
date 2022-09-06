@@ -10,7 +10,7 @@ import UIKit
 class PlayerController: UIViewController {
     
     // player entity
-    var player: Player!
+    var player: PlayerProtocol!
 
     // getting top static label
     lazy var topStaticLabel = getStaticTopLabel()
@@ -88,8 +88,7 @@ class PlayerController: UIViewController {
 
         view.backgroundColor = .black
         
-        player = Player()
-        
+        //player = Player()
     }
     
     private func getStaticTopLabel() -> UILabel {
@@ -194,9 +193,7 @@ class PlayerController: UIViewController {
         return button
     }
     
-    @objc func addToFavourites(_ sender: UIButton) {
-        
-    }
+    @objc func addToFavourites(_ sender: UIButton) {}
     
     private func getMoreButton() -> UIButton {
         // button creation
@@ -212,9 +209,7 @@ class PlayerController: UIViewController {
         return button
     }
     
-    @objc func getMore(_ sender: UIButton) {
-        
-    }
+    @objc func getMore(_ sender: UIButton) {}
     
     private func getCentralSongLabel() -> UILabel {
         // label creation
@@ -276,7 +271,7 @@ class PlayerController: UIViewController {
         button.center.y = durationSlider.frame.maxY + 70
         
         // button appearence settings
-        button.setImage(UIImage(named: "icons8-play-button-circled-100.png"), for: .normal)
+        button.setImage(UIImage(named: "icons8-pause-button-100.png"), for: .normal)
         
         button.addTarget(nil, action: #selector(tapPlayPause(_:)), for: .touchUpInside)
         
@@ -285,6 +280,13 @@ class PlayerController: UIViewController {
     
     @objc func tapPlayPause(_ sender: UIButton) {
         
+        if player.audioPlayer.isPlaying {
+            sender.setImage(UIImage(named: "icons8-play-button-circled-100.png"), for: .normal)
+            player.audioPlayer.pause()
+        } else {
+            sender.setImage(UIImage(named: "icons8-pause-button-100.png"), for: .normal)
+            player.audioPlayer.play()
+        }
     }
     
     private func getPreviousSongButton() -> UIButton {
