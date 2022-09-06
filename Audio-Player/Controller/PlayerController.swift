@@ -57,6 +57,9 @@ class PlayerController: UIViewController {
     // getting song repeat button
     lazy var songRepeatButton = getSongRepeatButton()
     
+    // getting volume slider
+    lazy var volumeSlider = getVolumeSlider()
+    
     
     override func loadView() {
         super.loadView()
@@ -76,6 +79,7 @@ class PlayerController: UIViewController {
         view.addSubview(nextSongButton)
         view.addSubview(songShuffleButton)
         view.addSubview(songRepeatButton)
+        view.addSubview(volumeSlider)
         
     }
     
@@ -336,9 +340,7 @@ class PlayerController: UIViewController {
         return button
     }
     
-    @objc func shuffleSongs(_ sender: UIButton) {
-        
-    }
+    @objc func shuffleSongs(_ sender: UIButton) {}
     
     private func getSongRepeatButton() -> UIButton {
         // button creation
@@ -355,7 +357,30 @@ class PlayerController: UIViewController {
         return button
     }
     
-    @objc func repeatSong(_ sender: UIButton) {
+    @objc func repeatSong(_ sender: UIButton) {}
+    
+    private func getVolumeSlider() -> UISlider {
+        // slider creation
+        let width = view.frame.width - 60
+        let slider = UISlider(frame: CGRect(x: 0, y: 0, width: width, height: 20))
+        // slider positioning
+        slider.center.x = view.center.x
+        slider.center.y = pausePlayButton.frame.maxY + 60
+        
+        // slider appearence settings
+        slider.maximumTrackTintColor = .gray
+        slider.minimumTrackTintColor = .white
+        slider.thumbTintColor = .white
+        slider.minimumValueImage = UIImage(named: "icons8-sound-speaker-24.png")
+        slider.maximumValueImage = UIImage(named: "icons8-voice-24.png")
+        
+        slider.addTarget(nil, action: #selector(changeVolume(_:)), for: .valueChanged)
+        
+        return slider
+        
+    }
+    
+    @objc func changeVolume(_ sender: UISlider) {
         
     }
 }

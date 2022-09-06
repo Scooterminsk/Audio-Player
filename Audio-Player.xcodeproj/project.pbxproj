@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E41377B628C72B1700918159 /* icons8-voice-24.png in Resources */ = {isa = PBXBuildFile; fileRef = E41377B428C72B1700918159 /* icons8-voice-24.png */; };
+		E41377B928C72D5500918159 /* icons8-sound-speaker-24.png in Resources */ = {isa = PBXBuildFile; fileRef = E41377B828C72D5500918159 /* icons8-sound-speaker-24.png */; };
 		E42F54B128C3886A00709459 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42F54B028C3886A00709459 /* AppDelegate.swift */; };
 		E42F54B328C3886A00709459 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42F54B228C3886A00709459 /* SceneDelegate.swift */; };
 		E42F54B828C3886A00709459 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E42F54B628C3886A00709459 /* Main.storyboard */; };
@@ -32,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E41377B428C72B1700918159 /* icons8-voice-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-voice-24.png"; sourceTree = "<group>"; };
+		E41377B828C72D5500918159 /* icons8-sound-speaker-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-sound-speaker-24.png"; sourceTree = "<group>"; };
 		E42F54AD28C3886A00709459 /* Audio-Player.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Audio-Player.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E42F54B028C3886A00709459 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E42F54B228C3886A00709459 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -167,6 +171,8 @@
 				E4F03B7628C62F4C00824A2A /* icons8-shuffle-30.png */,
 				E4F03B8628C62F5C00824A2A /* icons8-share-rounded-32.png */,
 				E4F03B8828C6405A00824A2A /* icons8-plus-64.png */,
+				E41377B428C72B1700918159 /* icons8-voice-24.png */,
+				E41377B828C72D5500918159 /* icons8-sound-speaker-24.png */,
 			);
 			path = ButtonImages;
 			sourceTree = "<group>";
@@ -239,6 +245,7 @@
 				E42F54BA28C3886A00709459 /* Assets.xcassets in Resources */,
 				E4F03B8328C62F4C00824A2A /* icons8-play-button-circled-100.png in Resources */,
 				E4F03B8028C62F4C00824A2A /* icons8-expand-arrow-50.png in Resources */,
+				E41377B628C72B1700918159 /* icons8-voice-24.png in Resources */,
 				E4F03B6E28C5F8AC00824A2A /* 2.png in Resources */,
 				E47A71DD28C67D9D00772C64 /* icons8-end-100 2.png in Resources */,
 				E42F54CF28C3941F00709459 /* Lilly Wood The Prick - Prayer in C.mp3 in Resources */,
@@ -246,6 +253,7 @@
 				E42F54B828C3886A00709459 /* Main.storyboard in Resources */,
 				E4F03B7E28C62F4C00824A2A /* icons8-shuffle-30.png in Resources */,
 				E42F54CE28C3941F00709459 /* Imagine Dragons - Believer.mp3 in Resources */,
+				E41377B928C72D5500918159 /* icons8-sound-speaker-24.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
