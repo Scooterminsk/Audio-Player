@@ -505,7 +505,12 @@ class PlayerController: UIViewController {
         let diffTime = player.audioPlayer.currentTime - timeSong
         let minutes1 = Int(diffTime / 60)
         let seconds1 = Int(-diffTime.truncatingRemainder(dividingBy: 60))
-        rightDurationLabel.text = NSString(format: "%02d:%02d", minutes1, seconds1) as String
+        if minutes1 == 0 {
+            rightDurationLabel.text = "-0:\(seconds1)"
+        } else {
+            rightDurationLabel.text = NSString(format: "%02d:%02d", minutes1, seconds1) as String
+        }
+        
         
         // moving slider's thumb along the song way
         durationSlider.setValue(Float(player.audioPlayer.currentTime), animated: true)
