@@ -6,11 +6,18 @@
 //
 
 import UIKit
+import AVFoundation
 
 class PlayerController: UIViewController {
     
     // player entity
-    var player: Player!
+    var player: PlayerProtocol!
+    
+    // timer var
+    var timer: Timer!
+    
+    // song duration
+    var timeSong = Double()
 
     // getting top static label
     lazy var topStaticLabel = getStaticTopLabel()
@@ -42,6 +49,12 @@ class PlayerController: UIViewController {
     // getting duration slider
     lazy var durationSlider = getDurationSlider()
     
+    // getting left duration label
+    lazy var leftDurationLabel = getLeftDurationLabel()
+    
+    // getting right duration label
+    lazy var rightDurationLabel = getRightDurationLabel()
+    
     // getting pause/play button
     lazy var pausePlayButton = getPlayPauseButton()
     
@@ -57,6 +70,9 @@ class PlayerController: UIViewController {
     // getting song repeat button
     lazy var songRepeatButton = getSongRepeatButton()
     
+    // getting volume slider
+    lazy var volumeSlider = getVolumeSlider()
+    
     
     override func loadView() {
         super.loadView()
@@ -71,11 +87,14 @@ class PlayerController: UIViewController {
         view.addSubview(centralSongLabel)
         view.addSubview(centralArtistLabel)
         view.addSubview(durationSlider)
+        view.addSubview(leftDurationLabel)
+        view.addSubview(rightDurationLabel)
         view.addSubview(pausePlayButton)
         view.addSubview(previousSongButton)
         view.addSubview(nextSongButton)
         view.addSubview(songShuffleButton)
         view.addSubview(songRepeatButton)
+        view.addSubview(volumeSlider)
         
     }
     
@@ -84,8 +103,15 @@ class PlayerController: UIViewController {
 
         view.backgroundColor = .black
         
-        player = Player()
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        durationSlider.maximumValue = Float(player.audioPlayer.duration)
         
+        volumeSlider.setValue(player.audioPlayer.volume, animated: false)
     }
     
     private func getStaticTopLabel() -> UILabel {
@@ -157,6 +183,23 @@ class PlayerController: UIViewController {
     }
     
     @objc func shareAction(_ sender: UIButton) {
+        // constants with song files
+        let activityItem1 = URL.init(fileURLWithPath: Bundle.main.path(forResource: "Imagine Dragons - Believer", ofType: "mp3")!)
+        let activityItem2 = URL.init(fileURLWithPath: Bundle.main.path(forResource: "Lilly Wood The Prick - Prayer in C", ofType: "mp3")!)
+        
+        // current playing song
+        let audioPath = Bundle.main.path(forResource: player.songName, ofType: "mp3")
+        
+        // getting activity controller
+        if audioPath == Bundle.main.path(forResource: "Imagine Dragons - Believer", ofType: "mp3") {
+            let activityVC = UIActivityViewController(activityItems: [activityItem1], applicationActivities: nil)
+            activityVC.popoverPresentationController?.sourceView = self.view
+            self.present(activityVC, animated: true)
+        } else {
+            let activityVC = UIActivityViewController(activityItems: [activityItem2], applicationActivities: nil)
+            activityVC.popoverPresentationController?.sourceView = self.view
+            self.present(activityVC, animated: true)
+        }
         
     }
     
@@ -190,9 +233,7 @@ class PlayerController: UIViewController {
         return button
     }
     
-    @objc func addToFavourites(_ sender: UIButton) {
-        
-    }
+    @objc func addToFavourites(_ sender: UIButton) {}
     
     private func getMoreButton() -> UIButton {
         // button creation
@@ -208,9 +249,7 @@ class PlayerController: UIViewController {
         return button
     }
     
-    @objc func getMore(_ sender: UIButton) {
-        
-    }
+    @objc func getMore(_ sender: UIButton) {}
     
     private func getCentralSongLabel() -> UILabel {
         // label creation
@@ -261,7 +300,38 @@ class PlayerController: UIViewController {
     }
     
     @objc func durationChanging(_ sender: UISlider) {
+        guard sender == durationSlider else {
+            return
+        }
+        player.audioPlayer.currentTime = TimeInterval(sender.value)
+    }
+    
+    private func getLeftDurationLabel() -> UILabel {
+        // label creation
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 35, height: 20))
+        // label positioning
+        label.frame.origin.x = durationSlider.frame.origin.x + 4
+        label.center.y = durationSlider.frame.minY - 15
         
+        // label appearence changing
+        label.textColor = .white
+        label.font = UIFont(name: "HelveticaNeue", size: 12)
+        
+        return label
+    }
+    
+    private func getRightDurationLabel() -> UILabel {
+        // label creation
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 35, height: 20))
+        // label positioning
+        label.frame.origin.x = durationSlider.frame.maxX - 28
+        label.center.y = durationSlider.frame.minY - 15
+        
+        // label appearence changing
+        label.textColor = .white
+        label.font = UIFont(name: "HelveticaNeue", size: 12)
+        
+        return label
     }
     
     private func getPlayPauseButton() -> UIButton {
@@ -272,7 +342,7 @@ class PlayerController: UIViewController {
         button.center.y = durationSlider.frame.maxY + 70
         
         // button appearence settings
-        button.setImage(UIImage(named: "icons8-play-button-circled-100.png"), for: .normal)
+        button.setImage(UIImage(named: "icons8-pause-button-100.png"), for: .normal)
         
         button.addTarget(nil, action: #selector(tapPlayPause(_:)), for: .touchUpInside)
         
@@ -281,6 +351,13 @@ class PlayerController: UIViewController {
     
     @objc func tapPlayPause(_ sender: UIButton) {
         
+        if player.audioPlayer.isPlaying {
+            sender.setImage(UIImage(named: "icons8-play-button-circled-100.png"), for: .normal)
+            player.audioPlayer.pause()
+        } else {
+            sender.setImage(UIImage(named: "icons8-pause-button-100.png"), for: .normal)
+            player.audioPlayer.play()
+        }
     }
     
     private func getPreviousSongButton() -> UIButton {
@@ -299,7 +376,11 @@ class PlayerController: UIViewController {
     }
     
     @objc func previousSong(_ sender: UIButton) {
-        
+        guard player.audioPlayer.currentTime < 7 else {
+            player.audioPlayer.currentTime = 0
+            return
+        }
+        switchSongs()
     }
     
     private func getNextSongButton() -> UIButton {
@@ -318,7 +399,36 @@ class PlayerController: UIViewController {
     }
     
     @objc func nextSong(_ sender: UIButton) {
-        
+        switchSongs()
+    }
+   
+    private func switchSongs() {
+        switch player.songName {
+        case SongNames.prayerInC.rawValue:
+            player.songName = SongNames.believer.rawValue
+            artistLabel.text = "Imagine Dragons"
+            centralArtistLabel.text = "Imagine Dragons"
+            timeSong = 204
+            player.songImage = UIImage(named: "2.png")
+            songImageView.image = player.songImage
+            centralSongLabel.text = "Believer"
+        case SongNames.believer.rawValue:
+            player.songName = SongNames.prayerInC.rawValue
+            artistLabel.text = "Lilly Wood The Prick"
+            centralArtistLabel.text = "Lilly Wood The Prick"
+            timeSong = 189
+            player.songImage = UIImage(named: "1.png")
+            songImageView.image = player.songImage
+            centralSongLabel.text = "Prayer in C"
+        default:
+            break
+        }
+        if player.audioPlayer.isPlaying {
+            player.playSong()
+        } else {
+            player.playSong()
+            player.audioPlayer.pause()
+        }
     }
     
     private func getSongShuffleButton() -> UIButton {
@@ -336,9 +446,7 @@ class PlayerController: UIViewController {
         return button
     }
     
-    @objc func shuffleSongs(_ sender: UIButton) {
-        
-    }
+    @objc func shuffleSongs(_ sender: UIButton) {}
     
     private func getSongRepeatButton() -> UIButton {
         // button creation
@@ -355,7 +463,57 @@ class PlayerController: UIViewController {
         return button
     }
     
-    @objc func repeatSong(_ sender: UIButton) {
+    @objc func repeatSong(_ sender: UIButton) {}
+    
+    private func getVolumeSlider() -> UISlider {
+        // slider creation
+        let width = view.frame.width - 60
+        let slider = UISlider(frame: CGRect(x: 0, y: 0, width: width, height: 20))
+        // slider positioning
+        slider.center.x = view.center.x
+        slider.center.y = pausePlayButton.frame.maxY + 60
+        
+        // slider appearence settings
+        slider.maximumTrackTintColor = .gray
+        slider.minimumTrackTintColor = .white
+        slider.thumbTintColor = .white
+        slider.minimumValueImage = UIImage(named: "icons8-sound-speaker-24.png")
+        slider.maximumValueImage = UIImage(named: "icons8-voice-24.png")
+        
+        slider.addTarget(nil, action: #selector(changeVolume(_:)), for: .valueChanged)
+        
+        return slider
         
     }
+    
+    @objc func changeVolume(_ sender: UISlider) {
+        guard sender == volumeSlider else {
+            return
+        }
+        player.audioPlayer.volume = sender.value
+    }
+    
+    @objc func updateTime() {
+        
+        // time count from start
+        let timePlayed = player.audioPlayer.currentTime
+        let minutes = Int(timePlayed / 60)
+        let seconds = Int(timePlayed.truncatingRemainder(dividingBy: 60))
+        leftDurationLabel.text = NSString(format: "%02d:%02d", minutes, seconds) as String
+        
+        // time count from end
+        let diffTime = player.audioPlayer.currentTime - timeSong
+        let minutes1 = Int(diffTime / 60)
+        let seconds1 = Int(-diffTime.truncatingRemainder(dividingBy: 60))
+        if minutes1 == 0 {
+            rightDurationLabel.text = "-0:\(seconds1)"
+        } else {
+            rightDurationLabel.text = NSString(format: "%02d:%02d", minutes1, seconds1) as String
+        }
+        
+        
+        // moving slider's thumb along the song way
+        durationSlider.setValue(Float(player.audioPlayer.currentTime), animated: true)
+    }
+    
 }
