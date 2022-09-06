@@ -183,6 +183,23 @@ class PlayerController: UIViewController {
     }
     
     @objc func shareAction(_ sender: UIButton) {
+        // constants with song files
+        let activityItem1 = URL.init(fileURLWithPath: Bundle.main.path(forResource: "Imagine Dragons - Believer", ofType: "mp3")!)
+        let activityItem2 = URL.init(fileURLWithPath: Bundle.main.path(forResource: "Lilly Wood The Prick - Prayer in C", ofType: "mp3")!)
+        
+        // current playing song
+        let audioPath = Bundle.main.path(forResource: player.songName, ofType: "mp3")
+        
+        // getting activity controller
+        if audioPath == Bundle.main.path(forResource: "Imagine Dragons - Believer", ofType: "mp3") {
+            let activityVC = UIActivityViewController(activityItems: [activityItem1], applicationActivities: nil)
+            activityVC.popoverPresentationController?.sourceView = self.view
+            self.present(activityVC, animated: true)
+        } else {
+            let activityVC = UIActivityViewController(activityItems: [activityItem2], applicationActivities: nil)
+            activityVC.popoverPresentationController?.sourceView = self.view
+            self.present(activityVC, animated: true)
+        }
         
     }
     
@@ -493,4 +510,5 @@ class PlayerController: UIViewController {
         // moving slider's thumb along the song way
         durationSlider.setValue(Float(player.audioPlayer.currentTime), animated: true)
     }
+    
 }
