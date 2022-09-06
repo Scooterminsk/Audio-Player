@@ -20,8 +20,17 @@ class Player: PlayerProtocol {
     var songName: String?
     var songImage: UIImage?
     var audioPlayer = AVAudioPlayer()
+    let audioSession = AVAudioSession.sharedInstance()
     
     func playSong() {
+        // trying to set the device volume as default
+        do {
+            try audioSession.setActive(true)
+            audioPlayer.volume = audioSession.outputVolume
+        } catch {
+            print("Error Setting up Audio Session")
+        }
+        // play song
         do {
             if let path = Bundle.main.path(forResource: songName, ofType: "mp3") {
                 try audioPlayer = AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))

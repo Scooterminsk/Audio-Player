@@ -11,6 +11,12 @@ class PlayerController: UIViewController {
     
     // player entity
     var player: PlayerProtocol!
+    
+    // timer var
+    var timer: Timer!
+    
+    // song duration
+    var timeSong = Double()
 
     // getting top static label
     lazy var topStaticLabel = getStaticTopLabel()
@@ -41,6 +47,12 @@ class PlayerController: UIViewController {
     
     // getting duration slider
     lazy var durationSlider = getDurationSlider()
+    
+    // getting left duration label
+    lazy var leftDurationLabel = getLeftDurationLabel()
+    
+    // getting right duration label
+    lazy var rightDurationLabel = getRightDurationLabel()
     
     // getting pause/play button
     lazy var pausePlayButton = getPlayPauseButton()
@@ -74,6 +86,8 @@ class PlayerController: UIViewController {
         view.addSubview(centralSongLabel)
         view.addSubview(centralArtistLabel)
         view.addSubview(durationSlider)
+        view.addSubview(leftDurationLabel)
+        view.addSubview(rightDurationLabel)
         view.addSubview(pausePlayButton)
         view.addSubview(previousSongButton)
         view.addSubview(nextSongButton)
@@ -88,7 +102,15 @@ class PlayerController: UIViewController {
 
         view.backgroundColor = .black
         
-        //player = Player()
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        durationSlider.maximumValue = Float(player.audioPlayer.duration)
+        
+        volumeSlider.setValue(player.audioPlayer.volume, animated: false)
     }
     
     private func getStaticTopLabel() -> UILabel {
@@ -260,7 +282,38 @@ class PlayerController: UIViewController {
     }
     
     @objc func durationChanging(_ sender: UISlider) {
+        guard sender == durationSlider else {
+            return
+        }
+        player.audioPlayer.currentTime = TimeInterval(sender.value)
+    }
+    
+    private func getLeftDurationLabel() -> UILabel {
+        // label creation
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 35, height: 20))
+        // label positioning
+        label.frame.origin.x = durationSlider.frame.origin.x + 4
+        label.center.y = durationSlider.frame.minY - 15
         
+        // label appearence changing
+        label.textColor = .white
+        label.font = UIFont(name: "HelveticaNeue", size: 12)
+        
+        return label
+    }
+    
+    private func getRightDurationLabel() -> UILabel {
+        // label creation
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 35, height: 20))
+        // label positioning
+        label.frame.origin.x = durationSlider.frame.maxX - 28
+        label.center.y = durationSlider.frame.minY - 15
+        
+        // label appearence changing
+        label.textColor = .white
+        label.font = UIFont(name: "HelveticaNeue", size: 12)
+        
+        return label
     }
     
     private func getPlayPauseButton() -> UIButton {
@@ -383,6 +436,27 @@ class PlayerController: UIViewController {
     }
     
     @objc func changeVolume(_ sender: UISlider) {
+        guard sender == volumeSlider else {
+            return
+        }
+        player.audioPlayer.volume = sender.value
+    }
+    
+    @objc func updateTime() {
         
+        // time count from start
+        let timePlayed = player.audioPlayer.currentTime
+        let minutes = Int(timePlayed / 60)
+        let seconds = Int(timePlayed.truncatingRemainder(dividingBy: 60))
+        leftDurationLabel.text = NSString(format: "%02d:%02d", minutes, seconds) as String
+        
+        // time count from end
+        let diffTime = player.audioPlayer.currentTime - timeSong
+        let minutes1 = Int(diffTime / 60)
+        let seconds1 = Int(-diffTime.truncatingRemainder(dividingBy: 60))
+        rightDurationLabel.text = NSString(format: "%02d:%02d", minutes1, seconds1) as String
+        
+        // moving slider's thumb along the song way
+        durationSlider.setValue(Float(player.audioPlayer.currentTime), animated: true)
     }
 }

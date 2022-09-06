@@ -140,6 +140,7 @@ class SongListController: UIViewController {
         player.songName = sender.tag == 0 ?  "Lilly Wood The Prick - Prayer in C" : "Imagine Dragons - Believer"
         playerController.artistLabel.text = sender.tag == 0 ? "Lilly Wood The Prick" : "Imagine Dragons"
         playerController.centralArtistLabel.text = sender.tag == 0 ? "Lilly Wood The Prick" : "Imagine Dragons"
+        playerController.timeSong = sender.tag == 0 ? 189 : 204
         
         player.songImage = sender.tag == 0 ? UIImage(named: "1.png") : UIImage(named: "2.png")
         playerController.songImageView.image = player.songImage
