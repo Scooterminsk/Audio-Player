@@ -16,6 +16,11 @@ protocol PlayerProtocol: AnyObject {
     func playSong()
 }
 
+enum SongNames: String {
+    case prayerInC = "Lilly Wood The Prick - Prayer in C"
+    case believer = "Imagine Dragons - Believer"
+}
+
 class Player: PlayerProtocol {
     var songName: String?
     var songImage: UIImage?
@@ -38,6 +43,7 @@ class Player: PlayerProtocol {
         } catch {
             print("error")
         }
+        self.audioPlayer.prepareToPlay()
         self.audioPlayer.play()
     }
 }

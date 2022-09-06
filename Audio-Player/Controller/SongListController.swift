@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class SongListController: UIViewController {
 
@@ -137,7 +138,7 @@ class SongListController: UIViewController {
     @objc func goToPlayer(_ sender: UIButton) {
         self.present(playerController, animated: true)
         playerController.player = player
-        player.songName = sender.tag == 0 ?  "Lilly Wood The Prick - Prayer in C" : "Imagine Dragons - Believer"
+        player.songName = sender.tag == 0 ?  SongNames.prayerInC.rawValue : SongNames.believer.rawValue
         playerController.artistLabel.text = sender.tag == 0 ? "Lilly Wood The Prick" : "Imagine Dragons"
         playerController.centralArtistLabel.text = sender.tag == 0 ? "Lilly Wood The Prick" : "Imagine Dragons"
         playerController.timeSong = sender.tag == 0 ? 189 : 204

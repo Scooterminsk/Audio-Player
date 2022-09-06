@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class PlayerController: UIViewController {
     
@@ -358,7 +359,11 @@ class PlayerController: UIViewController {
     }
     
     @objc func previousSong(_ sender: UIButton) {
-        
+        guard player.audioPlayer.currentTime < 7 else {
+            player.audioPlayer.currentTime = 0
+            return
+        }
+        switchSongs()
     }
     
     private func getNextSongButton() -> UIButton {
@@ -377,7 +382,36 @@ class PlayerController: UIViewController {
     }
     
     @objc func nextSong(_ sender: UIButton) {
-        
+        switchSongs()
+    }
+   
+    private func switchSongs() {
+        switch player.songName {
+        case SongNames.prayerInC.rawValue:
+            player.songName = SongNames.believer.rawValue
+            artistLabel.text = "Imagine Dragons"
+            centralArtistLabel.text = "Imagine Dragons"
+            timeSong = 204
+            player.songImage = UIImage(named: "2.png")
+            songImageView.image = player.songImage
+            centralSongLabel.text = "Believer"
+        case SongNames.believer.rawValue:
+            player.songName = SongNames.prayerInC.rawValue
+            artistLabel.text = "Lilly Wood The Prick"
+            centralArtistLabel.text = "Lilly Wood The Prick"
+            timeSong = 189
+            player.songImage = UIImage(named: "1.png")
+            songImageView.image = player.songImage
+            centralSongLabel.text = "Prayer in C"
+        default:
+            break
+        }
+        if player.audioPlayer.isPlaying {
+            player.playSong()
+        } else {
+            player.playSong()
+            player.audioPlayer.pause()
+        }
     }
     
     private func getSongShuffleButton() -> UIButton {
