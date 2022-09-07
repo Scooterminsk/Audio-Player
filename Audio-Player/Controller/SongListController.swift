@@ -64,6 +64,7 @@ class SongListController: UIViewController {
         playerController = PlayerController()
     }
     
+    // MARK: - Top yellow rectangle
     private func addYellowRect() -> CAShapeLayer {
         // layer creation
         let layer = CAShapeLayer()
@@ -77,6 +78,7 @@ class SongListController: UIViewController {
         return layer
     }
 
+    // MARK: - Playlist label
     private func addPlaylistLabel() -> UILabel {
         // label creation
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
@@ -100,7 +102,8 @@ class SongListController: UIViewController {
         
         return label
     }
-
+    
+    // MARK: - Image view getting
     private func getImageView(imageName: String, x: CGFloat, y: CGFloat) -> UIImageView {
         // UIImageView entity
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
@@ -113,6 +116,7 @@ class SongListController: UIViewController {
         return imageView
     }
     
+    // MARK: - Song buttons
     private func getSongButtton(forSong: String, x: CGFloat, y: CGFloat) -> UIButton {
         // button creation
         let width = view.frame.width - 10
@@ -150,6 +154,7 @@ class SongListController: UIViewController {
         playerSettings.playSong()
     }
     
+    // MARK: - Duration labels
     private func getDurationLabel(duration: String, x: CGFloat, y: CGFloat) -> UILabel {
         // label creation
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
