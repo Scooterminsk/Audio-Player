@@ -513,6 +513,11 @@ class PlayerController: UIViewController {
         
         // moving slider's thumb along the song way
         durationSlider.setValue(Float(audioPlayer.currentTime), animated: true)
+        
+        // checking if errors exist
+        if !audioPlayer.isPlaying && pausePlayButton.currentImage == UIImage(named: "icons8-pause-button-100.png") {
+            audioPlayer.play()
+        }
     }
     
 }
