@@ -11,7 +11,7 @@ import AVFoundation
 class SongListController: UIViewController {
 
     // player entity
-    var player: PlayerProtocol!
+    var playerSettings: PlayerProtocol!
     
     // player controller entity
     var playerController: PlayerController!
@@ -60,7 +60,7 @@ class SongListController: UIViewController {
         firstSongButton.tag = 0
         secondSongButton.tag = 1
         
-        player = Player()
+        playerSettings = PlayerSettings()
         playerController = PlayerController()
     }
     
@@ -137,17 +137,17 @@ class SongListController: UIViewController {
     
     @objc func goToPlayer(_ sender: UIButton) {
         self.present(playerController, animated: true)
-        playerController.player = player
-        player.songName = sender.tag == 0 ?  SongNames.prayerInC.rawValue : SongNames.believer.rawValue
+        playerController.playerSettings = playerSettings
+        playerSettings.songName = sender.tag == 0 ?  SongNames.prayerInC.rawValue : SongNames.believer.rawValue
         playerController.artistLabel.text = sender.tag == 0 ? "Lilly Wood The Prick" : "Imagine Dragons"
         playerController.centralArtistLabel.text = sender.tag == 0 ? "Lilly Wood The Prick" : "Imagine Dragons"
         playerController.timeSong = sender.tag == 0 ? 189 : 204
         
-        player.songImage = sender.tag == 0 ? UIImage(named: "1.png") : UIImage(named: "2.png")
-        playerController.songImageView.image = player.songImage
+        playerSettings.songImage = sender.tag == 0 ? UIImage(named: "1.png") : UIImage(named: "2.png")
+        playerController.songImageView.image = playerSettings.songImage
         playerController.centralSongLabel.text = sender.tag == 0 ? "Prayer in C": "Believer"
         
-        player.playSong()
+        playerSettings.playSong()
     }
     
     private func getDurationLabel(duration: String, x: CGFloat, y: CGFloat) -> UILabel {

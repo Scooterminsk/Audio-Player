@@ -9,25 +9,38 @@ import Foundation
 import UIKit
 import AVFoundation
 
+// audio-player global entity
+var audioPlayer: AVAudioPlayer!
+
+// protocol for audio-player settings class
 protocol PlayerProtocol: AnyObject {
     var songName: String? { get set }
     var songImage: UIImage? { get set }
-    var audioPlayer: AVAudioPlayer { get set }
     func playSong()
 }
 
+// enum with song names for better usage
 enum SongNames: String {
     case prayerInC = "Lilly Wood The Prick - Prayer in C"
     case believer = "Imagine Dragons - Believer"
 }
 
-class Player: PlayerProtocol {
+// audio-player settings class
+class PlayerSettings: NSObject, PlayerProtocol, AVAudioPlayerDelegate {
     var songName: String?
     var songImage: UIImage?
-    var audioPlayer = AVAudioPlayer()
     let audioSession = AVAudioSession.sharedInstance()
     
     func playSong() {
+        
+        // play song
+        do {
+            if let path = Bundle.main.path(forResource: songName, ofType: "mp3") {
+                try audioPlayer = AVAudioPlayer.init(contentsOf: URL(fileURLWithPath: path))
+            }
+        } catch {
+            print("error")
+        }
         // trying to set the device volume as default
         do {
             try audioSession.setActive(true)
@@ -35,15 +48,12 @@ class Player: PlayerProtocol {
         } catch {
             print("Error Setting up Audio Session")
         }
-        // play song
-        do {
-            if let path = Bundle.main.path(forResource: songName, ofType: "mp3") {
-                try audioPlayer = AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
-            }
-        } catch {
-            print("error")
-        }
-        self.audioPlayer.prepareToPlay()
-        self.audioPlayer.play()
+        
+        audioPlayer.delegate = self
+        audioPlayer.prepareToPlay()
+        audioPlayer.play()
+        
     }
 }
+
+//
