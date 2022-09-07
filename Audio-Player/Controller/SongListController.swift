@@ -11,7 +11,7 @@ import AVFoundation
 class SongListController: UIViewController {
 
     // player entity
-    var player: PlayerProtocol!
+    var playerSettings: PlayerProtocol!
     
     // player controller entity
     var playerController: PlayerController!
@@ -60,10 +60,11 @@ class SongListController: UIViewController {
         firstSongButton.tag = 0
         secondSongButton.tag = 1
         
-        player = Player()
+        playerSettings = PlayerSettings()
         playerController = PlayerController()
     }
     
+    // MARK: - Top yellow rectangle
     private func addYellowRect() -> CAShapeLayer {
         // layer creation
         let layer = CAShapeLayer()
@@ -77,6 +78,7 @@ class SongListController: UIViewController {
         return layer
     }
 
+    // MARK: - Playlist label
     private func addPlaylistLabel() -> UILabel {
         // label creation
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
@@ -100,7 +102,8 @@ class SongListController: UIViewController {
         
         return label
     }
-
+    
+    // MARK: - Image view getting
     private func getImageView(imageName: String, x: CGFloat, y: CGFloat) -> UIImageView {
         // UIImageView entity
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
@@ -113,6 +116,7 @@ class SongListController: UIViewController {
         return imageView
     }
     
+    // MARK: - Song buttons
     private func getSongButtton(forSong: String, x: CGFloat, y: CGFloat) -> UIButton {
         // button creation
         let width = view.frame.width - 10
@@ -137,19 +141,20 @@ class SongListController: UIViewController {
     
     @objc func goToPlayer(_ sender: UIButton) {
         self.present(playerController, animated: true)
-        playerController.player = player
-        player.songName = sender.tag == 0 ?  SongNames.prayerInC.rawValue : SongNames.believer.rawValue
+        playerController.playerSettings = playerSettings
+        playerSettings.songName = sender.tag == 0 ?  SongNames.prayerInC.rawValue : SongNames.believer.rawValue
         playerController.artistLabel.text = sender.tag == 0 ? "Lilly Wood The Prick" : "Imagine Dragons"
         playerController.centralArtistLabel.text = sender.tag == 0 ? "Lilly Wood The Prick" : "Imagine Dragons"
         playerController.timeSong = sender.tag == 0 ? 189 : 204
         
-        player.songImage = sender.tag == 0 ? UIImage(named: "1.png") : UIImage(named: "2.png")
-        playerController.songImageView.image = player.songImage
+        playerSettings.songImage = sender.tag == 0 ? UIImage(named: "1.png") : UIImage(named: "2.png")
+        playerController.songImageView.image = playerSettings.songImage
         playerController.centralSongLabel.text = sender.tag == 0 ? "Prayer in C": "Believer"
         
-        player.playSong()
+        playerSettings.playSong()
     }
     
+    // MARK: - Duration labels
     private func getDurationLabel(duration: String, x: CGFloat, y: CGFloat) -> UILabel {
         // label creation
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
